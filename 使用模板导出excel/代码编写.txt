@@ -1,0 +1,17 @@
+try {
+	wk = new HSSFWorkbook(new ClassPathResource("export_orders.xls").getInputStream());
+	XLSTransformer transformer = new XLSTransformer();
+	transformer.transformWorkbook(wk, dataMap);
+	wk.write(os);
+} catch (IOException e) {
+	e.printStackTrace();
+}finally{
+	if(null != wk){
+		try {
+			wk.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
